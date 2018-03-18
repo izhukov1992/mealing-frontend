@@ -1,17 +1,33 @@
 import React, { Component } from 'react';
+import {Grid, Cell, Card, CardText, TextField, Button } from 'react-md';
 
 export default class Signin extends Component {
   render() {
     return (
-      <div className="home">
-        <div className="home-header">
-          <img src="" className="home-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="home-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+    <Grid>
+      <Cell desktopsize={4} desktopOffset={4} tabletsize={6} tabletOffset={2} phonesize={12}>
+		<Card>
+		  <CardText>
+			<div>
+			  <TextField
+				id="floating-login"
+				label="Enter your login"
+			  />
+			</div>
+			<div>
+			  <TextField
+				id="floating-password"
+				label="Enter your password"
+				type="password"
+			  />
+			</div>
+			<div>
+			  <Button flat primary swapTheming>Sign In</Button>
+			</div>
+		  </CardText>
+		</Card>
+      </Cell>
+    </Grid>
     );
   }
 }
