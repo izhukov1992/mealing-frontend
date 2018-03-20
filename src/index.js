@@ -33,13 +33,17 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('content')
 );*/
+import { signIn, signedIn } from './reducers';
 
 const getToken = () => {
-  return 'initial';
+  return {
+    token: 'initial'
+  }
 }
 
 const reducers = combineReducers({
-  token: getToken
+  getToken,
+  signedIn
 })
 
 const store = createStore(reducers)

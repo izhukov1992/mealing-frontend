@@ -58,11 +58,9 @@ const mapDispatchToProps = dispatch => ({
 })
 */
 
-function mapStateToProps(state) {
-  return {
-    token: state.token
-  };
-}
+const mapStateToProps = state => ({
+  token: state.token
+})
 
 const mapDispatchToProps = dispatch => ({
   signedIn: token => dispatch(signedIn(token))
@@ -76,12 +74,13 @@ class Signin extends Component {
 			<div>
 				<h1>Token</h1>
 				<p>{ this.props.token }</p>
+				<button onClick={() => this.props.signedIn('fffffffff')}>+</button>
 			</div>
 		);
 	}
 }
 
-export default connect(mapStateToProps)(Signin)
+export default connect(mapStateToProps, mapDispatchToProps)(Signin)
 
 /*
 export default connect(

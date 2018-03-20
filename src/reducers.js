@@ -1,6 +1,6 @@
 import { SIGN_IN, SIGNED_IN } from './constants'
 
-export const sign = (state = {}, action) => {
+export const signIn = (state = {}, action) => {
   switch (action.type) {
     case SIGN_IN:
       return Object.assign({}, state, {
