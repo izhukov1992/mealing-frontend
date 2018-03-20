@@ -9,7 +9,7 @@ import App from './components/App';
 import Home from './components/Home';
 import Signin from './components/Signin';
 import Signup from './components/Signup';
-
+/*
 import * as reducers from './reducers';
 
 const store = createStore(
@@ -30,6 +30,23 @@ ReactDOM.render(
       <Route path="signup" component={Signup} />
     </Route>
   </Router>
+  </Provider>,
+  document.getElementById('content')
+);*/
+
+const getToken = () => {
+  return 'initial';
+}
+
+const reducers = combineReducers({
+  token: getToken
+})
+
+const store = createStore(reducers)
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
   </Provider>,
   document.getElementById('content')
 );

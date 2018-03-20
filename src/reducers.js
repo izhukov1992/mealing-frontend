@@ -1,18 +1,24 @@
 import { SIGN_IN, SIGNED_IN } from './constants'
 
-export function signIn(state = {}, action) {
+export const sign = (state = {}, action) => {
   switch (action.type) {
     case SIGN_IN:
-      return {};
+      return Object.assign({}, state, {
+		  login: action.login,
+		  pass: action.pass
+        })
     default:
       return state
   }
 }
 
-export function signedIn(state = {}, action) {
+export const signedIn = (state = {}, action) => {
+    console.log(action)
   switch (action.type) {
     case SIGNED_IN:
-      return {};
+      return Object.assign({}, state, {
+		  token: action.token
+        })
     default:
       return state
   }
