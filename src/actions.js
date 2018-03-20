@@ -1,16 +1,27 @@
-import * as constants from './constants';
+import { SIGN_IN, SIGN_OUT } from './constants';
 
-export const signIn = (login, pass) => ({
-	type: constants.SIGN_IN,
-	login: login,
-	pass: pass
-})
-
-export const signedIn = (token) => ({
-    type: constants.SIGNED_IN,
+export const signIn = (token) => ({
+    type: SIGN_IN,
     token
 })
 
 export const signOut = () => ({
-    type: constants.SIGN_OUT
+    type: SIGN_OUT
 })
+
+export const authenticate = (login, pass) => {
+  return dispatch => {
+    return fetch('/api/v1/auth/', {
+		method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+		body: JSON.stringify({
+			username: login,
+			password: pass
+		})
+	})
+    .then(response => response.json())
+    .then(json => dispatch(signIn(json.token)))
+  }
+}

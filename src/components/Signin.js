@@ -3,27 +3,30 @@ import { Grid, Cell, Card, CardText, TextField, Button } from 'react-md';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 
-import { signIn, signedIn } from '../actions';
+import { authenticate, signIn } from '../actions';
 
 class Signin extends Component {
   constructor(props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+    super(props);
+    this.state = {
+		username: '',
+		pass: ''
+	}
+
+    this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleClick(e) {
-    const { dispatch } = this.props
-    dispatch(signedIn('fffffffff'))
+    const { username, pass } = this.state;
+    this.props.dispatch(authenticate(username, pass));
   }
 
-  handleChange(value) {
-    const { dispatch } = this.props
-    dispatch(signedIn(value))
+  handleChange(value, e) {
+    this.setState({[e.target.name]: value});
   }
 
   render() {
-    console.dir(this.props);
     return (
     <Grid>
       <Cell desktopsize={4} desktopOffset={4} tabletsize={6} tabletOffset={2} phonesize={12}>
@@ -34,7 +37,7 @@ class Signin extends Component {
 			  <TextField
 				id="floating-login"
 				label="Enter your login"
-				name="login"
+				name="username"
                                 onChange={ this.handleChange }
 			  />
 			</div>
@@ -42,7 +45,7 @@ class Signin extends Component {
 			  <TextField
 				id="floating-password"
 				label="Enter your password"
-				name="password"
+				name="pass"
 				type="password"
                                 onChange={ this.handleChange }
 			  />
