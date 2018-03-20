@@ -59,28 +59,40 @@ const mapDispatchToProps = dispatch => ({
 */
 
 const mapStateToProps = state => ({
-  token: state.token
-})
-
-const mapDispatchToProps = dispatch => ({
-  signedIn: token => dispatch(signedIn(token))
+  user: state.user
 })
 
 class Signin extends Component {
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleClick(e) {
+    const { dispatch } = this.props
+    dispatch(signedIn('fffffffff'))
+  }
+
+  handleChange(e) {
+    const { dispatch } = this.props
+    dispatch(signedIn(e.target.value))
+  }
 
 	render() {
 		console.dir(this.props);
 		return (
 			<div>
 				<h1>Token</h1>
-				<p>{ this.props.token }</p>
-				<button onClick={() => this.props.signedIn('fffffffff')}>+</button>
+				<p>{ this.props.user.token }</p>
+				<input onChange={this.handleChange} />
+				<button onClick={this.handleClick}>+</button>
 			</div>
 		);
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signin)
+export default connect(mapStateToProps)(Signin)
 
 /*
 export default connect(

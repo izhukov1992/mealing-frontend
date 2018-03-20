@@ -8,7 +8,7 @@ export const signIn = (login, pass) => ({
 
 export const signedIn = (token) => ({
     type: constants.SIGNED_IN,
-    token: token
+    token
 })
 
 export const signOut = () => ({
