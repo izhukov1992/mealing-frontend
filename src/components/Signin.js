@@ -3,7 +3,7 @@ import { Grid, Cell, Card, CardText, TextField, Button } from 'react-md';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 
-import { signIn, signedIn } from '../actions';
+import { signIn, signedIn, login } from '../actions';
 
 class Signin extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class Signin extends Component {
 
   handleClick(e) {
     const { dispatch } = this.props
-    dispatch(signedIn('fffffffff'))
+    dispatch(login('login', 'pass'))
   }
 
   handleChange(value) {
