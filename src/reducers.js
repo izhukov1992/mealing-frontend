@@ -1,18 +1,17 @@
 import { SIGN_IN, SIGNED_IN } from './constants'
 
-export function signIn(state = {}, action) {
+export const userReducer = (state = {token: 'initial'}, action) => {
+    console.log(action)
   switch (action.type) {
     case SIGN_IN:
-      return {};
-    default:
-      return state
-  }
-}
-
-export function signedIn(state = {}, action) {
-  switch (action.type) {
+      return Object.assign({}, state, {
+		  login: action.login,
+		  pass: action.pass
+        })
     case SIGNED_IN:
-      return {};
+      return Object.assign({}, state, {
+		  token: action.token
+        })
     default:
       return state
   }
