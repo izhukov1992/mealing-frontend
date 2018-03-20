@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, IndexLink } from 'react-router';
 import {NavigationDrawer, FontIcon} from 'react-md';
-/*
+
 // Sadly the active prop on Link and IndexLink won't work correctly since
 // they rely on context for updates and react-md uses PureComponent behind
 // the scenes so the context updates don't happen.
@@ -48,17 +48,6 @@ class App extends Component {
       </NavigationDrawer>
     );
   }
-}
-*/
-
-import Signin from './Signin';
-
-class App extends Component {
-	render() {
-		return (
-			<Signin />
-		)
-	}
 }
 
 export default App;

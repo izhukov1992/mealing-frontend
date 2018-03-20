@@ -4,45 +4,56 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 
 import { signIn, signedIn } from '../actions';
-/*
+
 class Signin extends Component {
-    constructor(props, context) {
-        super(props, context);
-    }
-  componentWillMount() {
-    console.log(this.props)
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleClick(e) {
+    const { dispatch } = this.props
+    dispatch(signedIn('fffffffff'))
+  }
+
+  handleChange(value) {
+    const { dispatch } = this.props
+    dispatch(signedIn(value))
   }
 
   render() {
-    console.log(this.props);
+    console.dir(this.props);
     return (
     <Grid>
       <Cell desktopsize={4} desktopOffset={4} tabletsize={6} tabletOffset={2} phonesize={12}>
-		<Card>
-		  <CardText>
-			<form name="form">
-				<div>
-				  <TextField
-					id="floating-login"
-					label="Enter your login"
-					name="login"
-				  />
-				</div>
-				<div>
-				  <TextField
-					id="floating-password"
-					label="Enter your password"
-					name="password"
-					type="password"
-				  />
-				</div>
-				<div>
-				  <div>{this.props.token}</div>
-				  <Button flat primary swapTheming onClick={() => this.props.signedIn('dsfsdfsdf')}>Sign In</Button>
-				</div>
-			 </form>
-		  </CardText>
-		</Card>
+	<Card>
+	  <CardText>
+		<form name="form">
+			<div>
+			  <TextField
+				id="floating-login"
+				label="Enter your login"
+				name="login"
+                                onChange={ this.handleChange }
+			  />
+			</div>
+			<div>
+			  <TextField
+				id="floating-password"
+				label="Enter your password"
+				name="password"
+				type="password"
+                                onChange={ this.handleChange }
+			  />
+			</div>
+			<div>
+			  <p>{ this.props.user.token }</p>
+			  <Button flat primary swapTheming onClick={ this.handleClick }>Sign In</Button>
+			</div>
+		 </form>
+	  </CardText>
+	</Card>
       </Cell>
     </Grid>
     );
@@ -50,41 +61,7 @@ class Signin extends Component {
 }
 
 const mapStateToProps = state => ({
-  token: state.token
+  user: state.user
 })
 
-const mapDispatchToProps = dispatch => ({
-  signedIn: token => dispatch(signedIn(token))
-})
-*/
-
-const mapStateToProps = state => ({
-  token: state.token
-})
-
-const mapDispatchToProps = dispatch => ({
-  signedIn: token => dispatch(signedIn(token))
-})
-
-class Signin extends Component {
-
-	render() {
-		console.dir(this.props);
-		return (
-			<div>
-				<h1>Token</h1>
-				<p>{ this.props.token }</p>
-				<button onClick={() => this.props.signedIn('fffffffff')}>+</button>
-			</div>
-		);
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Signin)
-
-/*
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Signin)
-*/
+export default connect(mapStateToProps)(Signin)

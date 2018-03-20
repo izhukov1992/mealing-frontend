@@ -9,12 +9,12 @@ import App from './components/App';
 import Home from './components/Home';
 import Signin from './components/Signin';
 import Signup from './components/Signup';
-/*
-import * as reducers from './reducers';
+
+import { userReducer } from './reducers';
 
 const store = createStore(
   combineReducers({
-    ...reducers,
+    user: userReducer,
     routing: routerReducer
   })
 )
@@ -30,27 +30,6 @@ ReactDOM.render(
       <Route path="signup" component={Signup} />
     </Route>
   </Router>
-  </Provider>,
-  document.getElementById('content')
-);*/
-import { signIn, signedIn } from './reducers';
-
-const getToken = () => {
-  return {
-    token: 'initial'
-  }
-}
-
-const reducers = combineReducers({
-  getToken,
-  signedIn
-})
-
-const store = createStore(reducers)
-
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
   </Provider>,
   document.getElementById('content')
 );
