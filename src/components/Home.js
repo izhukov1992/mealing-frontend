@@ -1,6 +1,8 @@
+import { connect } from 'react-redux'
+
 import React, { Component } from 'react';
 
-export default class Home extends Component {
+class Home extends Component {
   render() {
     return (
       <div className="home">
@@ -11,7 +13,14 @@ export default class Home extends Component {
         <p className="home-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+	<p>{ this.props.user.token }</p>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps)(Home)

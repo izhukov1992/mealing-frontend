@@ -53,7 +53,6 @@ class Signin extends Component {
 			  />
 			</div>
 			<div>
-			  <p>{ this.props.user.token }</p>
 			  <Button flat primary swapTheming type="submit">Sign In</Button>
 			</div>
 		 </form>
@@ -65,8 +64,4 @@ class Signin extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.user
-})
-
-export default connect(mapStateToProps)(Signin)
+export default connect()(Signin)

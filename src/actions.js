@@ -1,3 +1,5 @@
+import { replace } from 'react-router-redux';
+
 import { SIGN_IN, SIGN_OUT } from './constants';
 
 export const signIn = (token) => ({
@@ -12,16 +14,19 @@ export const signOut = () => ({
 export const authenticate = (login, pass) => {
   return dispatch => {
     return fetch('/api/v1/auth/', {
-		method: 'POST',
+	method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-		body: JSON.stringify({
-			username: login,
-			password: pass
-		})
+	body: JSON.stringify({
+		username: login,
+		password: pass
 	})
+    })
     .then(response => response.json())
-    .then(json => dispatch(signIn(json.token)))
+    .then(json => {
+        dispatch(signIn(json.token));
+        dispatch(replace('/'));
+    })
   }
 }

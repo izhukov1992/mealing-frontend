@@ -5,12 +5,12 @@ const api_token = localStorage.getItem(API_TOKEN);
 export const userReducer = (state = {token: api_token}, action) => {
   switch (action.type) {
     case SIGN_IN:
-	  localStorage.setItem(API_TOKEN, action.token);
+      localStorage.setItem(API_TOKEN, action.token);
       return Object.assign({}, state, {
 		  token: action.token
         })
     case SIGN_OUT:
-	  localStorage.removeItem(API_TOKEN);
+      localStorage.removeItem(API_TOKEN);
       return Object.assign({}, state, {
 		  token: null
         })
