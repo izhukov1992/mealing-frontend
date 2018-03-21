@@ -13,11 +13,13 @@ class Signin extends Component {
 		pass: ''
 	}
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleClick(e) {
+  handleSubmit(e) {
+    e.preventDefault();
+
     const { username, pass } = this.state;
     this.props.dispatch(authenticate(username, pass));
   }
@@ -32,7 +34,7 @@ class Signin extends Component {
       <Cell desktopsize={4} desktopOffset={4} tabletsize={6} tabletOffset={2} phonesize={12}>
 	<Card>
 	  <CardText>
-		<form name="form">
+		<form name="form" onSubmit={ this.handleSubmit }>
 			<div>
 			  <TextField
 				id="floating-login"
@@ -52,7 +54,7 @@ class Signin extends Component {
 			</div>
 			<div>
 			  <p>{ this.props.user.token }</p>
-			  <Button flat primary swapTheming onClick={ this.handleClick }>Sign In</Button>
+			  <Button flat primary swapTheming type="submit">Sign In</Button>
 			</div>
 		 </form>
 	  </CardText>
