@@ -25,13 +25,13 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-  <Router history={browserHistory}>
-    <Route path="/" component={App}>
-      <IndexRoute component={Home} />
-      <Route path="signin" component={Signin} />
-      <Route path="signup" component={Signup} />
-    </Route>
-  </Router>
+    <Router history={browserHistory}>
+      <Route path="/" component={App}>
+        <IndexRoute component={Home} />
+        <Route path="signin" component={Signin} />
+        <Route path="signup" component={Signup} />
+      </Route>
+    </Router>
   </Provider>,
   document.getElementById('content')
 );

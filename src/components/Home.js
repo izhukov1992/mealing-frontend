@@ -13,7 +13,7 @@ class Home extends Component {
         <p className="home-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-	<p>{ this.props.auth.token }</p>
+        <p>{ this.props.auth.token }</p>
       </div>
     );
   }

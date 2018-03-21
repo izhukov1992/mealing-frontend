@@ -37,7 +37,7 @@ class App extends Component {
           to: '/signup',
           active: isActive('/signup', pathname),
           primaryText: 'Sign up',
-          leftIcon: <FontIcon>person_add</FontIcon>,
+         leftIcon: <FontIcon>person_add</FontIcon>,
         }]}
         mobileDrawerType={NavigationDrawer.DrawerTypes.TEMPORARY_MINI}
         tabletDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT_MINI}

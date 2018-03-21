@@ -10,18 +10,18 @@ export const authReducer = (state = initialState, action) => {
     case SIGN_IN_SUCCESS:
       localStorage.setItem(API_TOKEN, action.token);
       return Object.assign({}, state, {
-		  token: action.token,
-		  error: null
-        })
+        token: action.token,
+        error: null
+      })
     case SIGN_IN_FAILED:
       return Object.assign({}, state, {
-		  error: action.error
-        })
+        error: action.error
+      })
     case SIGN_OUT:
       localStorage.removeItem(API_TOKEN);
       return Object.assign({}, state, {
-		  token: null
-        })
+        token: null
+      })
     default:
       return state
   }
