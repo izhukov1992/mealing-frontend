@@ -13,14 +13,14 @@ class Home extends Component {
         <p className="home-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-	<p>{ this.props.user.token }</p>
+	<p>{ this.props.auth.token }</p>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  user: state.user
+  auth: state.auth
 })
 
 export default connect(mapStateToProps)(Home)

@@ -1,9 +1,14 @@
 import { replace } from 'react-router-redux';
 
-import { SIGN_IN, SIGN_OUT } from './constants';
+import { SIGN_IN_FAILED, SIGN_IN_SUCCESS, SIGN_OUT } from './constants';
 
-export const signIn = (token) => ({
-    type: SIGN_IN,
+export const signInFailed = (error) => ({
+    type: SIGN_IN_FAILED,
+    error
+})
+
+export const signInSuccess = (token) => ({
+    type: SIGN_IN_SUCCESS,
     token
 })
 
@@ -14,19 +19,27 @@ export const signOut = () => ({
 export const authenticate = (login, pass) => {
   return dispatch => {
     return fetch('/api/v1/auth/', {
-	method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-	body: JSON.stringify({
-		username: login,
-		password: pass
+		method: 'POST',
+		headers: {
+		  'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({
+			username: login,
+			password: pass
+		})
+    })
+    .then(response => {
+        if (response.ok) {
+			response.json().then(json => {
+				dispatch(signInSuccess(json.token));
+				dispatch(replace('/'));
+			})
+        }
+        else {
+			response.json().then(json => {
+				dispatch(signInFailed(json.details));
+			})
+        }
 	})
-    })
-    .then(response => response.json())
-    .then(json => {
-        dispatch(signIn(json.token));
-        dispatch(replace('/'));
-    })
   }
 }

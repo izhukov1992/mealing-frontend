@@ -3,7 +3,7 @@ import { Grid, Cell, Card, CardText, TextField, Button } from 'react-md';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 
-import { authenticate, signIn } from '../actions';
+import { authenticate } from '../actions';
 
 class Signin extends Component {
   constructor(props) {
@@ -55,6 +55,9 @@ class Signin extends Component {
 			<div>
 			  <Button flat primary swapTheming type="submit">Sign In</Button>
 			</div>
+			<div>
+			  <p>{ this.props.auth.error }</p>
+			</div>
 		 </form>
 	  </CardText>
 	</Card>
@@ -64,4 +67,8 @@ class Signin extends Component {
   }
 }
 
-export default connect()(Signin)
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps)(Signin)

@@ -11,11 +11,11 @@ import Home from './components/Home';
 import Signin from './components/Signin';
 import Signup from './components/Signup';
 
-import { userReducer } from './reducers';
+import { authReducer } from './reducers';
 
 const store = createStore(
   combineReducers({
-    user: userReducer
+    auth: authReducer
   }),
   applyMiddleware(
     thunkMiddleware,
