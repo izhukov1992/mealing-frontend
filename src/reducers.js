@@ -10,6 +10,10 @@ export const userReducer = (state = {token: api_token}, action) => {
 		  token: action.token
         })
     case SIGN_OUT:
+	  localStorage.removeItem(API_TOKEN);
+      return Object.assign({}, state, {
+		  token: null
+        })
     default:
       return state
   }
