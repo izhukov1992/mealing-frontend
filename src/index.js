@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import { Router, IndexRoute, Route, browserHistory } from 'react-router';
+import { Router, IndexRoute, Route, Redirect, browserHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux'
 import thunkMiddleware from 'redux-thunk'
 
@@ -30,6 +30,7 @@ ReactDOM.render(
         <IndexRoute component={Home} />
         <Route path="signin" component={Signin} />
         <Route path="signup" component={Signup} />
+        <Redirect from="signout" to="signin" />
       </Route>
     </Router>
   </Provider>,
