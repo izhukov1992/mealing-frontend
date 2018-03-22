@@ -40,6 +40,7 @@ class Signin extends Component {
                     id="floating-login"
                     label="Enter your login"
                     name="username"
+                    required={ true }
                     onChange={ this.handleChange }
                   />
                 </div>
@@ -49,25 +50,28 @@ class Signin extends Component {
                     label="Enter your password"
                     name="pass"
                     type="password"
+                    required={ true }
                     onChange={ this.handleChange }
                   />
                 </div>
                 <div>
                   <Button flat primary swapTheming type="submit">Sign In</Button>
                 </div>
-                <div>
-                  {this.props.auth.error && this.props.auth.error.username &&
-                    <p>username: { this.props.auth.error.username }</p>
-                  }
-                  {this.props.auth.error && this.props.auth.error.password &&
-                    <p>password: { this.props.auth.error.password }</p>
-                  }
-                  {this.props.auth.error && this.props.auth.error.non_field_errors &&
-                    this.props.auth.error.non_field_errors.map(error => (
-                      <p key={error}>{ error }</p>
-                    ))
-                  }
-                </div>
+                {this.props.auth.error && 
+                  <div>
+                    {this.props.auth.error.username &&
+                      <p>login: { this.props.auth.error.username }</p>
+                    }
+                    {this.props.auth.error.password &&
+                      <p>password: { this.props.auth.error.password }</p>
+                    }
+                    {this.props.auth.error.non_field_errors &&
+                      this.props.auth.error.non_field_errors.map(error => (
+                        <p key={error}>{ error }</p>
+                      ))
+                    }
+                  </div>
+                }
               </form>
             </CardText>
           </Card>
