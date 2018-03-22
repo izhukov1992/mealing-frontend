@@ -57,16 +57,16 @@ class Signin extends Component {
                 <div>
                   <Button flat primary swapTheming type="submit">Sign In</Button>
                 </div>
-                {this.props.auth.error && 
+                {this.props.auth.signin_errors && 
                   <div>
-                    {this.props.auth.error.username &&
-                      <p>login: { this.props.auth.error.username }</p>
+                    {this.props.auth.signin_errors.username &&
+                      <p>login: { this.props.auth.signin_errors.username }</p>
                     }
-                    {this.props.auth.error.password &&
-                      <p>password: { this.props.auth.error.password }</p>
+                    {this.props.auth.signin_errors.password &&
+                      <p>password: { this.props.auth.signin_errors.password }</p>
                     }
-                    {this.props.auth.error.non_field_errors &&
-                      this.props.auth.error.non_field_errors.map(error => (
+                    {this.props.auth.signin_errors.non_field_errors &&
+                      this.props.auth.signin_errors.non_field_errors.map(error => (
                         <p key={error}>{ error }</p>
                       ))
                     }

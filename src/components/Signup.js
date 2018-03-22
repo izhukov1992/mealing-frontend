@@ -104,28 +104,28 @@ class Signup extends Component {
                 <div>
                   <Button flat primary swapTheming type="submit">Sign Up</Button>
                 </div>
-                {this.props.auth.error &&
+                {this.props.auth.signup_errors &&
                   <div>
-                    {this.props.auth.error.username &&
-                      <p>login: { this.props.auth.error.username }</p>
+                    {this.props.auth.signup_errors.username &&
+                      <p>login: { this.props.auth.signup_errors.username }</p>
                     }
-                    {this.props.auth.error.email &&
-                      <p>email: { this.props.auth.error.email }</p>
+                    {this.props.auth.signup_errors.email &&
+                      <p>email: { this.props.auth.signup_errors.email }</p>
                     }
-                    {this.props.auth.error.password &&
-                      <p>password: { this.props.auth.error.password }</p>
+                    {this.props.auth.signup_errors.password &&
+                      <p>password: { this.props.auth.signup_errors.password }</p>
                     }
-                    {this.props.auth.error.first_name &&
-                      <p>first name: { this.props.auth.error.first_name }</p>
+                    {this.props.auth.signup_errors.first_name &&
+                      <p>first name: { this.props.auth.signup_errors.first_name }</p>
                     }
-                    {this.props.auth.error.last_name &&
-                      <p>last name: { this.props.auth.error.last_name }</p>
+                    {this.props.auth.signup_errors.last_name &&
+                      <p>last name: { this.props.auth.signup_errors.last_name }</p>
                     }
-                    {this.props.auth.error.account && this.props.auth.error.account.role &&
-                      <p>role: { this.props.auth.error.account.role }</p>
+                    {this.props.auth.signup_errors.account && this.props.auth.signup_errors.account.role &&
+                      <p>role: { this.props.auth.signup_errors.account.role }</p>
                     }
-                    {this.props.auth.error.non_field_errors &&
-                      this.props.auth.error.non_field_errors.map(error => (
+                    {this.props.auth.signup_errors.non_field_errors &&
+                      this.props.auth.signup_errors.non_field_errors.map(error => (
                         <p key={error}>{ error }</p>
                       ))
                     }

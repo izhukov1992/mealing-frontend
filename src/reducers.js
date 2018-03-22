@@ -2,7 +2,8 @@ import { SIGN_IN_FAILED, SIGN_IN_SUCCESS, SIGN_OUT, API_TOKEN, SIGN_UP_FAILED, S
 
 const initialState = {
   token: localStorage.getItem(API_TOKEN),
-  error: null
+  signin_errors: null,
+  signup_errors: null
 }
 
 export const authReducer = (state = initialState, action) => {
@@ -11,11 +12,12 @@ export const authReducer = (state = initialState, action) => {
       localStorage.setItem(API_TOKEN, action.token);
       return Object.assign({}, state, {
         token: action.token,
-        error: null
+        signin_errors: null,
+        signup_errors: null
       })
     case SIGN_IN_FAILED:
       return Object.assign({}, state, {
-        error: action.error
+        signin_errors: action.error
       })
     case SIGN_OUT:
       localStorage.removeItem(API_TOKEN);
@@ -26,11 +28,12 @@ export const authReducer = (state = initialState, action) => {
       localStorage.setItem(API_TOKEN, action.token);
       return Object.assign({}, state, {
         token: action.token,
-        error: null
+        signin_errors: null,
+        signup_errors: null
       })
     case SIGN_UP_FAILED:
       return Object.assign({}, state, {
-        error: action.error
+        signup_errors: action.error
       })
     default:
       return state
