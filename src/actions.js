@@ -18,7 +18,7 @@ export const signOut = () => ({
 
 export const authenticate = (login, pass) => {
   return dispatch => {
-    return fetch('/api/v1/auth/', {
+    return fetch('/api/v1/token/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ export const authenticate = (login, pass) => {
       }
       else {
         response.json().then(json => {
-          dispatch(signInFailed(json.details));
+          dispatch(signInFailed(json));
         })
       }
     })

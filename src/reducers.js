@@ -2,7 +2,7 @@ import { SIGN_IN_FAILED, SIGN_IN_SUCCESS, SIGN_OUT, API_TOKEN } from './constant
 
 const initialState = {
   token: localStorage.getItem(API_TOKEN),
-  error:  null
+  error: null
 }
 
 export const authReducer = (state = initialState, action) => {

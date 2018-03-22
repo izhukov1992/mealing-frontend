@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Cell, Card, CardText, TextField, Button } from 'react-md';
 import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 import { authenticate } from '../actions';
 
@@ -57,7 +57,17 @@ class Signin extends Component {
                   <Button flat primary swapTheming type="submit">Sign In</Button>
                 </div>
                 <div>
-                  <p>{ this.props.auth.error }</p>
+                  {this.props.auth.error && this.props.auth.error.username &&
+                    <p>username: { this.props.auth.error.username }</p>
+                  }
+                  {this.props.auth.error && this.props.auth.error.password &&
+                    <p>password: { this.props.auth.error.password }</p>
+                  }
+                  {this.props.auth.error && this.props.auth.error.non_field_errors &&
+                    this.props.auth.error.non_field_errors.map(error => (
+                      <p key={error}>{ error }</p>
+                    ))
+                  }
                 </div>
               </form>
             </CardText>
