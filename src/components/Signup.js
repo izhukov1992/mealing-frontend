@@ -1,17 +1,147 @@
 import React, { Component } from 'react';
+import { Grid, Cell, Card, CardText, TextField, Button, SelectField  } from 'react-md';
+import { connect } from 'react-redux';
 
-export default class Signup extends Component {
+import { register } from '../actions';
+
+class Signup extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      username: '',
+      email: '',
+      pass: '',
+      fname: '',
+      lname: '',
+      role: ''
+    }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+
+    const { username, email, pass, fname, lname, role } = this.state;
+    this.props.dispatch(register(username, email, pass, fname, lname, role));
+  }
+
+  handleChange(value, e) {
+    this.setState({[e.target.name]: value});
+  }
+
+  handleSelect(value, index, e, obj) {
+    this.setState({[obj.name]: value});
+  }
+
   render() {
     return (
-      <div className="home">
-        <div className="home-header">
-          <img src="" className="home-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="home-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Grid>
+        <Cell desktopsize={4} desktopOffset={4} tabletsize={6} tabletOffset={2} phonesize={12}>
+          <Card>
+            <CardText>
+              <form name="form" onSubmit={ this.handleSubmit }>
+                <div>
+                  <TextField
+                    id="floating-login"
+                    label="Enter your login"
+                    name="username"
+                    required={ true }
+                    onChange={ this.handleChange }
+                  />
+                </div>
+                <div>
+                  <TextField
+                    id="floating-email"
+                    label="Enter your email"
+                    name="email"
+                    type="email"
+                    required={ true }
+                    onChange={ this.handleChange }
+                  />
+                </div>
+                <div>
+                  <TextField
+                    id="floating-password"
+                    label="Enter your password"
+                    name="pass"
+                    type="password"
+                    required={ true }
+                    onChange={ this.handleChange }
+                  />
+                </div>
+                <div>
+                  <TextField
+                    id="floating-fname"
+                    label="Enter your first name"
+                    name="fname"
+                    onChange={ this.handleChange }
+                  />
+                </div>
+                <div>
+                  <TextField
+                    id="floating-lname"
+                    label="Enter your last name"
+                    name="lname"
+                    onChange={ this.handleChange }
+                  />
+                </div>
+                <div>
+                  <SelectField
+                    id="floating-role"
+                    label="Choose your role"
+                    name="role"
+                    className="md-cell md-cell--12"
+                    sameWidth
+                    menuItems={ ['Client', 'Trainer'] }
+                    required={ true }
+                    onChange={ this.handleSelect }
+                  />
+                </div>
+                <div>
+                  <Button flat primary swapTheming type="submit">Sign Up</Button>
+                </div>
+                {this.props.auth.error &&
+                  <div>
+                    {this.props.auth.error.username &&
+                      <p>login: { this.props.auth.error.username }</p>
+                    }
+                    {this.props.auth.error.email &&
+                      <p>email: { this.props.auth.error.email }</p>
+                    }
+                    {this.props.auth.error.password &&
+                      <p>password: { this.props.auth.error.password }</p>
+                    }
+                    {this.props.auth.error.first_name &&
+                      <p>first name: { this.props.auth.error.first_name }</p>
+                    }
+                    {this.props.auth.error.last_name &&
+                      <p>last name: { this.props.auth.error.last_name }</p>
+                    }
+                    {this.props.auth.error.account && this.props.auth.error.account.role &&
+                      <p>role: { this.props.auth.error.account.role }</p>
+                    }
+                    {this.props.auth.error.non_field_errors &&
+                      this.props.auth.error.non_field_errors.map(error => (
+                        <p key={error}>{ error }</p>
+                      ))
+                    }
+                </div>
+                }
+              </form>
+            </CardText>
+          </Card>
+        </Cell>
+      </Grid>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps)(Signup)

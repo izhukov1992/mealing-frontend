@@ -1,4 +1,4 @@
-import { SIGN_IN_FAILED, SIGN_IN_SUCCESS, SIGN_OUT, API_TOKEN } from './constants'
+import { SIGN_IN_FAILED, SIGN_IN_SUCCESS, SIGN_OUT, API_TOKEN, SIGN_UP_FAILED, SIGN_UP_SUCCESS } from './constants'
 
 const initialState = {
   token: localStorage.getItem(API_TOKEN),
@@ -21,6 +21,16 @@ export const authReducer = (state = initialState, action) => {
       localStorage.removeItem(API_TOKEN);
       return Object.assign({}, state, {
         token: null
+      })
+    case SIGN_UP_SUCCESS:
+      localStorage.setItem(API_TOKEN, action.token);
+      return Object.assign({}, state, {
+        token: action.token,
+        error: null
+      })
+    case SIGN_UP_FAILED:
+      return Object.assign({}, state, {
+        error: action.error
       })
     default:
       return state

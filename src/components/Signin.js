@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Grid, Cell, Card, CardText, TextField, Button } from 'react-md';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { authenticate } from '../actions';
