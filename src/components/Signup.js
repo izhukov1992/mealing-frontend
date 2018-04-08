@@ -51,6 +51,7 @@ class Signup extends Component {
                     name="username"
                     required={ true }
                     onChange={ this.handleChange }
+                    value={ this.state.username }
                   />
                 </div>
                 <div>
@@ -61,6 +62,7 @@ class Signup extends Component {
                     type="email"
                     required={ true }
                     onChange={ this.handleChange }
+                    value={ this.state.email }
                   />
                 </div>
                 <div>
@@ -71,6 +73,7 @@ class Signup extends Component {
                     type="password"
                     required={ true }
                     onChange={ this.handleChange }
+                    value={ this.state.pass }
                   />
                 </div>
                 <div>
@@ -79,6 +82,7 @@ class Signup extends Component {
                     label="Enter your first name"
                     name="fname"
                     onChange={ this.handleChange }
+                    value={ this.state.fname }
                   />
                 </div>
                 <div>
@@ -87,6 +91,7 @@ class Signup extends Component {
                     label="Enter your last name"
                     name="lname"
                     onChange={ this.handleChange }
+                    value={ this.state.lname }
                   />
                 </div>
                 <div>
@@ -99,6 +104,7 @@ class Signup extends Component {
                     menuItems={ ['Client', 'Trainer'] }
                     required={ true }
                     onChange={ this.handleSelect }
+                    value={ this.state.role }
                   />
                 </div>
                 <div>
